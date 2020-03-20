@@ -1,5 +1,6 @@
 import webpack from "webpack";
-
+import symbol from 'log-symbols';
+import chalk from 'chalk';
 const config = require('./webpack.config.js');
 
 let build = () => {
