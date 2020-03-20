@@ -5,6 +5,7 @@ import chalk from 'chalk';
 import create from './create'; // 项目创建
 import init from './init'; // 项目初始化
 import dev from './dev'; // 项目启动
+import build from './build'; //项目打包
 
 /**
  * little-bird-cli 命令列表
@@ -47,6 +48,16 @@ let actionMap = {
             }
         ],
         alias: 'd'
+    },
+    //打包
+    build: {
+        description: '服务端项目打包',
+        usages: [
+            'little-bird-cli build',
+            'lb-cli build',
+            'lbc build'
+        ],
+        alias: 'b'
     }
 }
 
@@ -75,6 +86,9 @@ Object.keys(actionMap).forEach(action => {
                     break;
                 case 'dev':
                     dev(program.port);
+                    break;
+                case 'build':
+                    build();
                     break;
                 default:
                     break;

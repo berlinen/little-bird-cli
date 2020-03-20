@@ -24,15 +24,19 @@ var _dev = require('./dev');
 
 var _dev2 = _interopRequireDefault(_dev);
 
+var _build = require('./build');
+
+var _build2 = _interopRequireDefault(_build);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// 项目启动
+//项目打包
 
 /**
  * little-bird-cli 命令列表
  */
 
-// 项目创建
+// 项目初始化
 let actionMap = {
     // 项目创建
     create: {
@@ -57,10 +61,17 @@ let actionMap = {
             defaultValue: 3000
         }],
         alias: 'd'
+    },
+    //打包
+    build: {
+        description: '服务端项目打包',
+        usages: ['little-bird-cli build', 'lb-cli build', 'lbc build'],
+        alias: 'b'
     }
 
     // 添加create,init,dev命令
-}; // 项目初始化
+}; // 项目启动
+// 项目创建
 Object.keys(actionMap).forEach(action => {
 
     if (actionMap[action].options) {
@@ -81,6 +92,9 @@ Object.keys(actionMap).forEach(action => {
                 break;
             case 'dev':
                 (0, _dev2.default)(_commander2.default.port);
+                break;
+            case 'build':
+                (0, _build2.default)();
                 break;
             default:
                 break;
