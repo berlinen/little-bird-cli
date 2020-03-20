@@ -33,7 +33,7 @@ let create = async (ProjectName) => {
                  * 下载模版比较耗时,这里通过ora插入下载loading, 提示用户正在下载模版
                  */
                 let loading = ora('模板下载中...');
-                loading.start('模板下载完成');
+                loading.start('模板下载中...');
 
                 let Api = '';
                 switch (answer.frame) {
@@ -50,7 +50,7 @@ let create = async (ProjectName) => {
                 downloadTemplate(ProjectName, Api)
                 .then(() => {
 
-                    loading.succeed();
+                    loading.succeed('模板下载完成');
 
                     // 下载完成后,根据用户输入更新配置文件
                     const fileName = `${ProjectName}/package.json`;
