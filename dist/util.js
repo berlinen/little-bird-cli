@@ -22,24 +22,16 @@ var _downloadGitRepo2 = _interopRequireDefault(_downloadGitRepo);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
 // 文件是否存在
-let notExistFold = (() => {
-    var _ref = _asyncToGenerator(function* (name) {
-        return new Promise(function (resolve) {
-            if (_fs2.default.existsSync(name)) {
-                console.log(_logSymbols2.default.error, _chalk2.default.red('文件夹名已被占用，请更换名字重新创建'));
-            } else {
-                resolve();
-            }
-        });
+let notExistFold = async name => {
+    return new Promise(resolve => {
+        if (_fs2.default.existsSync(name)) {
+            console.log(_logSymbols2.default.error, _chalk2.default.red('文件夹名已被占用，请更换名字重新创建'));
+        } else {
+            resolve();
+        }
     });
-
-    return function notExistFold(_x) {
-        return _ref.apply(this, arguments);
-    };
-})();
+};
 
 // 询问用户
 let promptList = [{
@@ -66,23 +58,17 @@ let prompt = () => {
 };
 
 // 项目模板远程下载
-let downloadTemplate = (() => {
-    var _ref2 = _asyncToGenerator(function* (ProjectName, api) {
-        return new Promise(function (resolve, reject) {
-            (0, _downloadGitRepo2.default)(api, ProjectName, { clone: true }, function (err) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve();
-                }
-            });
+let downloadTemplate = async (ProjectName, api) => {
+    return new Promise((resolve, reject) => {
+        (0, _downloadGitRepo2.default)(api, ProjectName, { clone: true }, err => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve();
+            }
         });
     });
-
-    return function downloadTemplate(_x2, _x3) {
-        return _ref2.apply(this, arguments);
-    };
-})();
+};
 
 // 更新json配置文件
 let updateJsonFile = (fileName, obj) => {

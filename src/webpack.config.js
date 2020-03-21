@@ -17,10 +17,10 @@ module.exports = {
         poll: 1000
     },
     entry: './src/index.ts', // 入口文件
-    output: {
-        publicPath: '/dist/',
-        filename: '[name].[hash].js'
-    },
+    // output: {
+    //     publicPath: '/public/',
+    //     filename: '[name].[hash].js'
+    // },
     devtool: 'cheap-module-eval-source-map', //不包含列信息，同时 loader 的 sourcemap 也被简化为只包含对应行的
     module: {
         rules: [{
