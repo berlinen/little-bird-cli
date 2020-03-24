@@ -14,10 +14,10 @@ var _chalk2 = _interopRequireDefault(_chalk);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const config = require('./webpack.config.js');
+const config = require('./webpack.build.js');
 
 let build = () => {
-    (0, _webpack2.default)(config, (test1, test2) => {
+    (0, _webpack2.default)(config, () => {
         console.log(_logSymbols2.default.success, _chalk2.default.green('打包完成'));
         process.exit(1);
     });
